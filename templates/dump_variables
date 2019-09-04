@@ -1,7 +1,7 @@
-HOSTVARS (ANSIBLE GATHERED, group_vars, host_vars) :
+# HOSTVARS (ANSIBLE GATHERED, group_vars, host_vars) :
 
-{{ hostvars[inventory_hostname] | to_yaml }}
+{{ hostvars[inventory_hostname] | to_nice_yaml(indent=2, width=1337) }}
 
-PLAYBOOK VARS:
+# PLAYBOOK VARS:
 
-{{ vars | to_yaml }}
+{{ vars | to_nice_yaml(indent=2, width=1337) }}
