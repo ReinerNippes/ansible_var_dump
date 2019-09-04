@@ -1,0 +1,13 @@
+#!/usr/bin/env ansible-playbook
+
+- hosts: all
+  tasks:
+  - template:
+      src: templates/dump_variables
+      dest: /tmp/ansible_variables
+  - fetch:
+      src: /tmp/ansible_variables
+      dest: "{{inventory_hostname}}_ansible_variables"
+  - file:
+      path: /tmp/ansible_variables
+      state: absent
