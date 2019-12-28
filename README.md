@@ -6,5 +6,6 @@ Collect all Ansible Variables
 
 ```bash
 git clone https://github.com/ReinerNippes/ansible_var_dump.git
+cd ansible_var_dump
 ./dump_ansible_vars.yml -i localhost, --connection=local
 ```
