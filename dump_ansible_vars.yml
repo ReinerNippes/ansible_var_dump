@@ -2,12 +2,16 @@
 
 - hosts: all
   tasks:
-  - template:
+  - name: dump all variables
+    template:
       src: templates/dump_variables
-      dest: /tmp/ansible_variables
-  - fetch:
-      src: /tmp/ansible_variables
-      dest: "{{inventory_hostname}}_ansible_variables"
-  - file:
-      path: /tmp/ansible_variables
+      dest: /tmp/ansible_variables.yml
+      mode: 0640
+  - name: get the dump
+    fetch:
+      src: /tmp/ansible_variables.yml
+      dest: "{{ inventory_hostname }}_ansible_variables"
+  - name: delete the remote dump
+    file:
+      path: /tmp/ansible_variables.yml
       state: absent
